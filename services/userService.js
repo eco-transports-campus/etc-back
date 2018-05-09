@@ -42,7 +42,7 @@ module.exports = {
         if(token === undefined){
             cb({});
         }
-        else {  
+        else {
             User.find({token}).then((users) => {
                 returnUniqueUser(users, cb);
             });
@@ -51,7 +51,7 @@ module.exports = {
     updateTokenForUser: (user, cb) => {
         getDBUserByUsername(user.username, (dbUser) => {
 
-            console.l
+            // console.l
 
             // token generation
             const tokgen = new TokenGenerator(256, TokenGenerator.BASE62);

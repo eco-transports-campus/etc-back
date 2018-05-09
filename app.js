@@ -6,6 +6,7 @@ const MODE         = 'debug',
       session      = require('express-session'),
       mongooseDB   = require('mongoose'),
       MemoryStore  = require('session-memory-store')(session);
+      bodyParser   = require('body-parser')
 
 mongooseDB.connect('mongodb://localhost/etc');
 global.Mongoose = mongooseDB;
@@ -18,9 +19,9 @@ let app = express();
 app.use(session({
       name: 'NSESSIONID',
       secret: 'Hello I am a long long long secret',
-      store: new MemoryStore()  // or other session store 
+      store: new MemoryStore()  // or other session store
 }));
-  
+
 
 app.use(cookieParser());
 
@@ -56,12 +57,15 @@ var casClient = new cas({
           status: 418
       }
   });
-  
+
 app.use(casClient.core());
 
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.use(bodyParser.json())
 
 app.use(require(__dirname + '/routes'));
-  
+
 
 let server = require('http').Server(app);
 

@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.18.2",
     "connect-cas2": "^1.2.5",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
