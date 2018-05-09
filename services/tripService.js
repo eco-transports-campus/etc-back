@@ -7,14 +7,14 @@ module.exports = {
             cb(trips);
         });
     },
-    // addTrip: (req, res) => {
-    //   const newTrip = new Trip(req.body.trip)
-    //
-    //   newTrip.save((err, saved) => {
-    //     if (err) {
-    //       res.status(500).send(err)
-    //     }
-    //     res.json({ trip: saved })
-    //   })
-    // }
+    addTrip: (trip) => {
+      const newTrip = new Trip(trip)
+
+      newTrip.save((err, saved) => {
+        if (err) {
+          res.status(500).send(err)
+        }
+        return saved
+      })
+    }
 }

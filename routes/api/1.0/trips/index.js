@@ -11,14 +11,14 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log(req.body)
   const newTrip = new Trip(req.body.trip)
 
   newTrip.save((err, saved) => {
     if (err) {
       res.status(500).send(err)
     }
-    res.json({ trip: saved })
+    let response = { data: saved, token: req.newtoken};
+    res.send(response);
   })
 });
 
