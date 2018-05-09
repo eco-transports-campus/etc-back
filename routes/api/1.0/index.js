@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const path = require('path'); 
+const path = require('path');
 const loginService = require(path.resolve('services/loginService'));
 
 router.get('*', (req, res, next) => {
@@ -19,6 +19,7 @@ router.get('*', (req, res, next) => {
 
 router.use('/users', require(__dirname + '/users'));
 router.use('/login', require(__dirname + '/login'));
+router.use('/trips', require(__dirname + '/trips'));
 
 router.get('*', (req, res) => {
     res.send('Ok - API v1');
